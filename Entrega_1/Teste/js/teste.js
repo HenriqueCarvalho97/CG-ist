@@ -6,9 +6,6 @@ var angle=0, keys = [];
 
 
 
-//var ball;
-
-
 
 function addTableLeg(obj, x, y, z) {
     'use strict';
@@ -32,21 +29,6 @@ function addTableTop(obj, x, y, z) {
     obj.add(mesh);
 }
 
-/*function createBall(x, y, z) {
-    'use strict';
-    
-    ball = new THREE.Object3D();
-    ball.userData = { jumping: true, step: 0 };
-    
-    material = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: true });
-    geometry = new THREE.SphereGeometry(4, 10, 10);
-    mesh = new THREE.Mesh(geometry, material);
-    
-    ball.add(mesh);
-    ball.position.set(x, y, z);
-    
-    scene.add(ball);
-}*/
 
 
 function createTable(x, y, z) {
@@ -74,12 +56,12 @@ function createScene() {
     scene = new THREE.Scene();
     
 
-    scene.add(new THREE.AxisHelper(20));
+    //scene.add(new THREE.AxisHelper(20));
     
     createTable(0, 8, 0);
     //createBall(0, 0, 15);
     createChair(50, 8, 0);
-    //createCandeeiro(-50, 0, 0);
+    createCandeeiro(-50, 0, 0);
 }
 
 function createCamera() {
@@ -90,9 +72,9 @@ function createCamera() {
                                          1,
                                          1000);
 
-    camera.position.x = 0;
-    //camera.position.y = 100;
-    camera.position.z = 100;
+    //camera.position.x = 80;
+    //camera.position.y = 70;
+    camera.position.z = 70;
     camera.lookAt(scene.position);
 }
 
