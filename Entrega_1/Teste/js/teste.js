@@ -65,16 +65,16 @@ function createScene() {
 }
 
 function createCamera() {
-    //camera = new THREE.OrthographicCamera(window.innerWidth / -2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / -2, 1, 1000);
+    camera = new THREE.OrthographicCamera(window.innerWidth / -2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / -2, 1, 1000);
 
-    camera = new THREE.PerspectiveCamera(70,
+    /*camera = new THREE.PerspectiveCamera(70,
                                          window.innerWidth / window.innerHeight,
                                          1,
-                                         1000);
+                                         1000);*/
 
-    //camera.position.x = 80;
-    //camera.position.y = 70;
-    camera.position.z = 70;
+    camera.position.x = 0;
+    camera.position.y = 100;
+    camera.position.z = 0;
     camera.lookAt(scene.position);
 }
 
@@ -90,86 +90,16 @@ function onResize() {
 
 }
 
+function onKeyUp(e) {
+    // mark keys that were released
+    keys[e.keyCode] = false;
+}
+
 function onKeyDown(e) {
     'use strict';
-    
-    switch (e.keyCode) {
-    case 65: //A
-    case 97: //a
-        scene.traverse(function (node) {
-            if (node instanceof THREE.Mesh) {
-                node.material.wireframe = !node.material.wireframe;
-            }
-        });
-        break;
-    }
-}
 
+    keys[e.keyCode] = true;
 
-function render() {
-    'use strict';
-    renderer.render(scene, camera);
-}
-
-/*function init() {
-    'use strict';
-    renderer = new THREE.WebGLRenderer({
-        antialias: true
-    });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
-   
-    createScene();
-    createCamera();
-    
-    render();
-    
-    window.addEventListener("keydown", onKeyDown);
-    //window.addEventListener("resize", onResize);
-}
-
-function animate() {
-    'use strict';
-    
-    /*if (ball.userData.jumping) {
-        ball.userData.step += 0.04;
-        ball.position.y = Math.abs(30 * (Math.sin(ball.userData.step)));
-        ball.position.z = 15 * (Math.cos(ball.userData.step));
-    }
-    render();
-    
-    requestAnimationFrame(animate);
-}*/
-
-function init(){
-    'use strict';
-
-    renderer = new  THREE.WebGLRenderer();
-
-    renderer.setSize(window.innerWidth, window.innerHeight);
-
-    document.body.appendChild(renderer.domElement);
-
-    createScene();
-    createCamera();
-
-
-    render();
-
-    window.addEventListener("keydown", onKeyDown);
-
-    document.addEventListener('keydown', function(e){
-    keys[e.which] = true;
-    });
-    document.addEventListener('keyup', function(e){
-    keys[e.which] = false;
-    });
-}
-
-
-function animate(){
-    'use strict';
-    
     //Frente
     if (keys[38]) {
         chair.position.x +=  Math.sin(angle); 
@@ -190,6 +120,75 @@ function animate(){
         chair.rotation.y -= 0.08; 
         angle -= 0.08;
     }
+
+    if (keys[49]) {
+        
+        camera.position.x = 0;
+        camera.position.y = 100;
+        camera.position.z = 0;
+        camera.lookAt(scene.position);
+    }
+
+    if (keys[50]) {
+       
+        camera.position.x = 0;
+        camera.position.y = 0;
+        camera.position.z = 100;
+        camera.lookAt(scene.position);
+    }
+
+    if (keys[51]) {
+        
+        camera.position.x = 100;
+        camera.position.y = 0;
+        camera.position.z = 0;
+        camera.lookAt(scene.position);
+    }
+    
+    switch (e.keyCode) {
+    case 65: //A
+    case 97: //a
+        scene.traverse(function (node) {
+            if (node instanceof THREE.Mesh) {
+                node.material.wireframe = !node.material.wireframe;
+            }
+        });
+        break;
+    }
+
+}
+
+
+function render() {
+    'use strict';
+    renderer.render(scene, camera);
+}
+
+
+function init(){
+    'use strict';
+
+    renderer = new  THREE.WebGLRenderer();
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    document.body.appendChild(renderer.domElement);
+
+    createScene();
+    createCamera();
+
+
+    render();
+
+    window.addEventListener("keydown", onKeyDown);
+    window.addEventListener("keyup", onKeyUp);
+
+}
+
+
+function animate(){
+    'use strict';
+    
 
     render();
 
