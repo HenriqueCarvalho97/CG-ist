@@ -2,8 +2,6 @@ var camera, scene, renderer;
 
 var geometry, material, mesh;
 
-//var ball;
-
 var chair;
 
 function addWheel(obj, x, y, z, r) {
@@ -82,9 +80,22 @@ function createChair(x, y, z) {
     chair = new THREE.Object3D();
     
     chair.userData = {
-        angle: 0
+        angle: 0,
+        speed: 0,
+        acceleration: 0,
+        moveForward: false,
+        moveBackwards: false,
+        rotateLeft: false,
+        rotateRight: false
         };
-   
+
+
+    chair.speed = 0;
+    chair.moveForward = false;
+    chair.moveBackwards = false;
+    chair.rotateLeft = false;
+    chair.rotateRight = false;
+
     addChairSit(chair, 0, 0, 0);
     addChairPole(chair, 0, -2, 0);
     addChairLegR(chair, 0, -10, 0);
@@ -104,5 +115,57 @@ function createChair(x, y, z) {
     chair.position.x = x;
     chair.position.y = y;
     chair.position.z = z;
+}
+
+function moveChair(){
+    // ACCELERATION
+    if(chair.moveForward){
+        chair.acceleration = 0.05;
+    }else if(chair.moveBackwards){
+        chair.acceleration = -0.05;
+    }
+
+    //STOP
+    if(!chair.moveForward && !chair.moveBackwards){
+        if(chair.speed < 0){
+            chair.speed += 0.025;
+        }
+        else if(chair.speed > 0){
+            chair.speed -= 0.025;
+        }
+        chair.acceleration = 0;
+
+        //Weird bug fix
+        if(chair.speed < 0.5 && chair.speed > 0){
+            chair.speed = 0;
+        }
+    }
+
+    // SPEED
+    if ((chair.moveForward || chair.moveBackwards) && chair.speed < 1.5 && chair.speed > -1.5){
+        chair.speed = chair.speed + chair.acceleration;
+    }
+
+    //MOVE
+    chair.position.x += chair.speed * Math.sin(angle);
+    chair.position.z += chair.speed * Math.cos(angle);
+
+    if(chair.speed != 0){
+
+        chair.children.forEach(function(element){
+            if(element.geometry.type == 'TorusGeometry'){
+                element.rotation.x = Math.PI / chair.speed;
+            }
+        });
+    }
+    //TURN
+    if(chair.rotateLeft){
+        chair.rotation.y += 0.08;
+        angle += 0.08;
+    }
+    if(chair.rotateRight){
+        chair.rotation.y -= 0.08;
+        angle -= 0.08;
+    }
 }
 

@@ -67,14 +67,13 @@ function createScene() {
 function createCamera() {
     camera = new THREE.OrthographicCamera(window.innerWidth / -2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / -2, 1, 1000);
 
-    /*camera = new THREE.PerspectiveCamera(70,
-                                         window.innerWidth / window.innerHeight,
-                                         1,
-                                         1000);*/
-
+    // camera = new THREE.PerspectiveCamera(20,
+    //                                      window.innerWidth / window.innerHeight,
+    //                                      1,
+    //                                      1000);
     camera.position.x = 0;
     camera.position.y = 100;
-    camera.position.z = 0;
+    camera.position.z = 100;
     camera.lookAt(scene.position);
 }
 
@@ -91,69 +90,67 @@ function onResize() {
 }
 
 function onKeyUp(e) {
+    'use strict';
     // mark keys that were released
-    keys[e.keyCode] = false;
+    switch(e.keyCode){
+        case 38:
+            chair.moveForward = false;
+            break;
+        case 40:
+            chair.moveBackwards = false;
+            break;
+        case 37:
+            chair.rotateLeft = false;
+            break;
+        case 39:
+            chair.rotateRight = false;
+            break;
+    }
+
 }
 
 function onKeyDown(e) {
     'use strict';
 
-    keys[e.keyCode] = true;
-
-    //Frente
-    if (keys[38]) {
-        chair.position.x +=  Math.sin(angle); 
-        chair.position.z +=  Math.cos(angle);
-    }
-    //Trás
-    if (keys[40]) {
-        chair.position.x -= Math.sin(angle); 
-        chair.position.z -= Math.cos(angle);
-    }
-    //Esquerda
-    if (keys[37]) {
-        chair.rotation.y += 0.08; 
-        angle += 0.08;
-    }
-    //Direita
-    if (keys[39]) {
-        chair.rotation.y -= 0.08; 
-        angle -= 0.08;
-    }
-
-    if (keys[49]) {
-        
-        camera.position.x = 0;
-        camera.position.y = 100;
-        camera.position.z = 0;
-        camera.lookAt(scene.position);
-    }
-
-    if (keys[50]) {
-       
-        camera.position.x = 0;
-        camera.position.y = 0;
-        camera.position.z = 100;
-        camera.lookAt(scene.position);
-    }
-
-    if (keys[51]) {
-        
-        camera.position.x = 100;
-        camera.position.y = 0;
-        camera.position.z = 0;
-        camera.lookAt(scene.position);
-    }
-    
-    switch (e.keyCode) {
-    case 65: //A
-    case 97: //a
-        scene.traverse(function (node) {
-            if (node instanceof THREE.Mesh) {
-                node.material.wireframe = !node.material.wireframe;
-            }
-        });
-        break;
+    switch(e.keyCode){
+        case 38: //Arrow Up
+            chair.moveForward = true;
+            break;
+        case 40: //Arrow Down
+            chair.moveBackwards = true;
+            break;
+        case 37: //Arrow Left
+            chair.rotateLeft = true;
+            break;
+        case 39: //Arrow Right
+            chair.rotateRight = true;
+            break;
+        case 49:
+            camera.position.x = 0;
+            camera.position.y = 100;
+            camera.position.z = 0;
+            camera.lookAt(scene.position);
+            break;
+        case 50:
+            camera.position.x = 0;
+            camera.position.y = 0;
+            camera.position.z = 100;
+            camera.lookAt(scene.position);
+            break;
+        case 51:
+            camera.position.x = 100;
+            camera.position.y = 0;
+            camera.position.z = 0;
+            camera.lookAt(scene.position);
+            break;
+        case 65: //A
+        case 97: //a
+            scene.traverse(function (node) {
+                if (node instanceof THREE.Mesh) {
+                    node.material.wireframe = !node.material.wireframe;
+                }
+            });
+            break;
     }
 
 }
@@ -189,6 +186,7 @@ function init(){
 function animate(){
     'use strict';
     
+    moveChair();
 
     render();
 
