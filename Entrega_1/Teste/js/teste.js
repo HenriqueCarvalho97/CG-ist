@@ -74,7 +74,13 @@ function createScene() {
 }
 
 function createCamera() {
-	   camera = new THREE.OrthographicCamera(-200, 200, 100, -100, 1, 1000);
+    if (window.innerHeight > window.innerWidth) {
+        var aspectRatio = window.innerHeight / window.innerWidth;
+        camera = new THREE.OrthographicCamera( -100, 100, 100 * aspectRatio, -100 * aspectRatio, 1, 1000);
+    } else {
+        var aspectRatio = window.innerWidth / window.innerHeight;
+        camera = new THREE.OrthographicCamera(-100 * aspectRatio, 100 * aspectRatio, 100, -100, 1, 1000);
+    }
 
 	// camera = new THREE.PerspectiveCamera(20,
 	// 	window.innerWidth / window.innerHeight,
@@ -89,13 +95,24 @@ function createCamera() {
 function onResize() {
 	'use strict';
 
-	renderer.setSize(window.innerWidth, window.innerHeight);
+    if (window.innerHeight > window.innerWidth) {
+        var aspectRatio = window.innerHeight / window.innerWidth;
+        camera.left = -200 / 2;
+        camera.right = 200 / 2;
+        camera.top = 100 * aspectRatio;
+        camera.bottom = -100 * aspectRatio;
 
-	if (window.innerHeight > 0 && window.innerWidth > 0) {
-		camera.aspect = window.innerWidth / window.innerHeight;
-		camera.updateProjectionMatrix();
-	}
+    } else {
+        var aspectRatio = window.innerWidth / window.innerHeight;
+        camera.left = -200 * aspectRatio / 2;
+        camera.right = 200 * aspectRatio / 2;
+        camera.top = 100;
+        camera.bottom = -100;
+    }
 
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.aspect = aspectRatio;
+    camera.updateProjectionMatrix();
 }
 
 function onKeyUp(e) {
@@ -189,6 +206,7 @@ function init() {
 
 	window.addEventListener("keydown", onKeyDown);
 	window.addEventListener("keyup", onKeyUp);
+	window.addEventListener("resize", onResize);
 
 }
 
