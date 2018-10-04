@@ -91,6 +91,7 @@ function createChair(x, y, z) {
 
 
     chair.speed = 0;
+    chair.accelaration = 0;
     chair.moveForward = false;
     chair.moveBackwards = false;
     chair.rotateLeft = false;
@@ -117,55 +118,65 @@ function createChair(x, y, z) {
     chair.position.z = z;
 }
 
-function moveChair(){
+function moveChair(obj, time){
+    obj.acceleration = 0;
+    // console.log(time);
+
     // ACCELERATION
-    if(chair.moveForward){
-        chair.acceleration = 0.05;
-    }else if(chair.moveBackwards){
-        chair.acceleration = -0.05;
+    if(obj.moveForward){
+        obj.acceleration = 150;
+    }else if(obj.moveBackwards){
+        obj.acceleration = -150;
     }
 
     //STOP
-    if(!chair.moveForward && !chair.moveBackwards){
-        if(chair.speed < 0){
-            chair.speed += 0.025;
-        }
-        else if(chair.speed > 0){
-            chair.speed -= 0.025;
-        }
-        chair.acceleration = 0;
+    if(!obj.moveForward && !obj.moveBackwards){
 
-        //Weird bug fix
-        if(chair.speed < 0.5 && chair.speed > 0){
-            chair.speed = 0;
+        if(obj.speed < 0){
+            obj.acceleration = 100;
+        }
+        else if(obj.speed > 0){
+            obj.acceleration = -100;
         }
     }
 
-    // SPEED
-    if ((chair.moveForward || chair.moveBackwards) && chair.speed < 1.5 && chair.speed > -1.5){
-        chair.speed = chair.speed + chair.acceleration;
+    if(obj.speed <= 150 && obj.speed >= -150){
+
+        if((obj.speed < 2 && obj.speed > -2) && !obj.moveForward && !obj.moveBackwards){
+            obj.speed = 0;
+        }else{
+            obj.speed += obj.acceleration * time;
+        }
+        if(obj.speed > 150){
+            obj.speed = 150;
+        }else if (obj.speed < -150){
+            obj.speed = -150;
+        }
     }
 
-    //MOVE
-    chair.position.x += chair.speed * Math.sin(angle);
-    chair.position.z += chair.speed * Math.cos(angle);
+    obj.position.x += ((obj.speed * time) + (0.5 * obj.acceleration * time * time)) * Math.sin(angle);
+    obj.position.z += ((obj.speed * time) + (0.5 * obj.acceleration * time * time)) * Math.cos(angle);
 
-    if(chair.speed != 0){
 
-        chair.children.forEach(function(element){
-            if(element.geometry.type == 'TorusGeometry'){
-                element.rotation.x = Math.PI / chair.speed;
+    //WHEELS ROTATION
+    if(obj.speed !== 0){
+
+        obj.children.forEach(function(element){
+            if(element.geometry.type === 'TorusGeometry'){
+                element.rotation.z = Math.PI / obj.speed;
             }
         });
     }
     //TURN
-    if(chair.rotateLeft){
-        chair.rotation.y += 0.08;
+    if(obj.rotateLeft){
+        obj.rotation.y += 0.08;
         angle += 0.08;
     }
-    if(chair.rotateRight){
-        chair.rotation.y -= 0.08;
+    if(obj.rotateRight){
+        obj.rotation.y -= 0.08;
         angle -= 0.08;
     }
 }
+
+
 
