@@ -64,11 +64,7 @@ function createScene() {
 
 	scene = new THREE.Scene();
 
-
-	//scene.add(new THREE.AxisHelper(20));
-
 	createTable(0, 8, 0);
-	//createBall(0, 0, 15);
 	createChair(50, 14, 0);
 	createCandeeiro(-50, 3.5, 0);
 }
@@ -82,10 +78,6 @@ function createCamera() {
         camera = new THREE.OrthographicCamera(-100 * aspectRatio, 100 * aspectRatio, 100, -100, 1, 1000);
     }
 
-	// camera = new THREE.PerspectiveCamera(20,
-	// 	window.innerWidth / window.innerHeight,
-	// 	1,
-	// 	1000);
 	camera.position.x = 0;
 	camera.position.y = 50;
 	camera.position.z = 50;
