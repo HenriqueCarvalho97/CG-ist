@@ -2,8 +2,6 @@ var camera, scene, renderer;
 
 var geometry, material, mesh;
 
-//var ball;
-
 var candeeiro;
 
 function addHat(obj, x, y, z) {
