@@ -9,7 +9,7 @@ function addWheel(obj, x, y, z, r) {
 
     material = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: true });
 
-    geometry = new THREE.TorusGeometry(1, 1, 15, 15);
+    geometry = new THREE.TorusGeometry(1, 1, 15, 3);
     mesh = new THREE.Mesh(geometry, material);
     mesh.rotation.y = Math.PI / 2;
     mesh.position.set(x, y, z);
@@ -120,8 +120,7 @@ function createChair(x, y, z) {
 
 function moveChair(obj, time){
     obj.acceleration = 0;
-    // console.log(time);
-
+    
     // ACCELERATION
     if(obj.moveForward){
         obj.acceleration = 150;
@@ -157,13 +156,11 @@ function moveChair(obj, time){
     obj.position.x += ((obj.speed * time) + (0.5 * obj.acceleration * time * time)) * Math.sin(angle);
     obj.position.z += ((obj.speed * time) + (0.5 * obj.acceleration * time * time)) * Math.cos(angle);
 
-
     //WHEELS ROTATION
-    if(obj.speed !== 0){
-
+    if(obj.speed != 0){
         obj.children.forEach(function(element){
             if(element.geometry.type === 'TorusGeometry'){
-                element.rotation.z = Math.PI / obj.speed;
+                element.rotation.z += (obj.speed / Math.PI) / 40;
             }
         });
     }

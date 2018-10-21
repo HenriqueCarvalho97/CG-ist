@@ -92,19 +92,19 @@ function onKeyDown(e) {
 		case 39: //Arrow Right
 			chair.rotateRight = true;
 			break;
-		case 49:
+		case 49: //1
 			camera.position.x = 0;
 			camera.position.y = 50;
 			camera.position.z = 0;
 			camera.lookAt(scene.position);
 			break;
-		case 50:
+		case 50: //2
 			camera.position.x = 0;
 			camera.position.y = 0;
 			camera.position.z = 50;
 			camera.lookAt(scene.position);
 			break;
-		case 51:
+		case 51: //3
 			camera.position.x = 50;
 			camera.position.y = 0;
 			camera.position.z = 0;
