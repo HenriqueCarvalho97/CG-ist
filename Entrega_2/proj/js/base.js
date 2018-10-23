@@ -5,39 +5,39 @@ var geometry, material, mesh;
 var base, wall, field;
 
 function addBase(obj, x, y, z){
-	'use strict';
+    'use strict';
 
-	base = new THREE.Object3D();
+    base = new THREE.Object3D();
 
-	material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
+    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
 
-    geometry = new THREE.BoxGeometry(400, 0, 200);
+    geometry = new THREE.BoxGeometry(200, 0, 100);
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x, y, z);
     obj.add(mesh);
 }
 
 function addLongWall(obj, x, y, z){
-	'use strict';
+    'use strict';
 
-	wall = new THREE.Object3D();
+    wall = new THREE.Object3D();
 
-	material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
+    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
 
-    geometry = new THREE.BoxGeometry(400, Math.sqrt(50000)/10, 0);
+    geometry = new THREE.BoxGeometry(200, Math.sqrt(50000)/10, 0);
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x, y, z);
     obj.add(mesh);
 }
 
 function addShortWall(obj, x, y, z){
-	'use strict';
+    'use strict';
 
-	wall = new THREE.Object3D();
+    wall = new THREE.Object3D();
 
-	material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
+    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
 
-    geometry = new THREE.BoxGeometry(0, Math.sqrt(50000)/10, 200);
+    geometry = new THREE.BoxGeometry(0, Math.sqrt(50000)/10, 100);
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x, y, z);
     obj.add(mesh);
@@ -45,17 +45,17 @@ function addShortWall(obj, x, y, z){
 
 function createField(x, y, z){
 
-	'use strict';
+    'use strict';
 
-	field = new THREE.Object3D();
+    field = new THREE.Object3D();
 
-	addBase(field, 0, 0, 0);
-	addLongWall(field, 0, Math.sqrt(50000)/20, 100);
-	addLongWall(field, 0, Math.sqrt(50000)/20, -100);
-	addShortWall(field, 200, Math.sqrt(50000)/20, 0);
-	addShortWall(field, -200, Math.sqrt(50000)/20, 0);
+    addBase(field, 0, 0, 0);
+    addLongWall(field, 0, Math.sqrt(50000)/20, 50);
+    addLongWall(field, 0, Math.sqrt(50000)/20, -50);
+    addShortWall(field, 100, Math.sqrt(50000)/20, 0);
+    addShortWall(field, -100, Math.sqrt(50000)/20, 0);
 
-	scene.add(field);
-    
+    scene.add(field);
+
 
 }

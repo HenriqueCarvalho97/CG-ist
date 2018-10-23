@@ -18,7 +18,7 @@ function createScene() {
 
 	createField(0, 0, 0);
 
-	for(var i = 0; i < 9; i++){
+	for(var i = 0; i < 1; i++){
 		ball = new Ball(0,0,0,false);
 		balls.push(ball);
 	}
@@ -46,6 +46,27 @@ function createCameraPerspective() {
 	cameraPerspective = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 3 * window.innerHeight);
 	cameraPerspective.position.set(250,150,250);
 	cameraPerspective.lookAt(scene.position);
+}
+
+function createCameraMovable() {
+    'use strict';
+
+    var baller;
+
+    scene.traverse(function (node) {
+        if (node instanceof Ball) {
+            if(node.name == 'Player Ball'){
+                baller = node;
+            }
+        }
+    });
+
+    cameraMovable = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 2, 3 * window.innerHeight);
+    cameraMovable.position.x = baller.position.x + 75;
+    cameraMovable.position.y = baller.position.y + 50;
+    cameraMovable.position.z = baller.position.z;
+    cameraMovable.lookAt(new THREE.Vector3(baller.position.x, baller.position.y, baller.position.z));
+
 }
 
 function onResize() {
@@ -117,23 +138,20 @@ function onKeyDown(e) {
 
 }
 
-
 function render() {
-	'use strict';
-	switch (cameraValue) {
-		case 1:
+    'use strict';
+    switch (cameraValue) {
+        case 1:
             renderer.render(scene, cameraOrthographic);
             break;
-		case 2:
-			renderer.render(scene, cameraPerspective);
-			break;
-		case 3:
-			renderer.render(scene, cameraPerspective);
-			// renderer.render(scene, cameraMovable);
-			break;
+        case 2:
+            renderer.render(scene, cameraPerspective);
+            break;
+        case 3:
+            renderer.render(scene, cameraMovable);
+            break;
     }
 }
-
 
 function init() {
 	'use strict';

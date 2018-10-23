@@ -6,12 +6,12 @@ class Movable extends THREE.Object3D {
     }
 
     setRandom(){
-        var xx = this.getRandomInt(-200, 200);
-        var zz = this.getRandomInt(-100, 100);
+        var xx = this.getRandomInt(-100, 100);
+        var zz = this.getRandomInt(-50, 50);
 
-        this.position.x = this.limits(xx, 200, -200);
+        this.position.x = this.limits(xx, 100, -100);
         this.position.y = Math.sqrt(50000)/20;
-        this.position.z = this.limits(zz, 100, -100);
+        this.position.z = this.limits(zz, 50, -50);
     }
 
     getPosition(){
@@ -26,18 +26,16 @@ class Movable extends THREE.Object3D {
         'use strict';
 
         if(lim > 0){
-            if(lim > max - Math.sqrt(50000)/10){
-                lim = max - Math.sqrt(50000)/10;
+            if(lim > max - Math.sqrt(50000)/20){
+                lim = max - Math.sqrt(50000)/20;
             }
         }
         else{
-            if(lim < min + Math.sqrt(50000)/10){
-                lim = min + Math.sqrt(50000)/10;
+            if(lim < min + Math.sqrt(50000)/20){
+                lim = min + Math.sqrt(50000)/20;
             }
         }
 
         return lim;
     }
-
-
 }

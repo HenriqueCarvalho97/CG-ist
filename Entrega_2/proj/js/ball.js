@@ -28,16 +28,38 @@ class Ball extends Movable{
         this.position.x += this.direction.x * this.speed;
         this.position.z += this.direction.z * this.speed;
         this.hasCollidedWall();
+        this.hasCollidedAnotherBall(balls);
     }
 
 
     hasCollidedWall(){
-        if(this.position.x >= 200 - Math.sqrt(50000)/20 || this.position.x <= -200 + Math.sqrt(50000)/20){
+        if(this.position.x >= 100 - Math.sqrt(50000)/20 || this.position.x <= -100 + Math.sqrt(50000)/20){
             this.direction.x = -this.direction.x;
         }
-        if(this.position.z >= 100 - Math.sqrt(50000)/20 || this.position.z <= -100 + Math.sqrt(50000)/20 ){
+        if(this.position.z >= 50 - Math.sqrt(50000)/20 || this.position.z <= -50 + Math.sqrt(50000)/20 ){
             this.direction.z = -this.direction.z;
         }
+    }
+
+    hasCollidedAnotherBall(balls){
+        var x = this.position.x;
+        var z = this.position.z;
+        var thisball = 2;
+        balls.forEach(function(element){
+            if(element.position.x === x && element.position.z === z){
+                return;
+            }
+            else{
+                if(x - element.position.x + Math.sqrt(50000)/10 === 0 || z - element.position.z + Math.sqrt(50000)/10 === 0){
+                    thisball = 0;
+                    element.speed = 0;
+                }
+            }
+        });
+        if(thisball = 0){
+            this.speed = 0;
+        }
+
     }
 
 }
