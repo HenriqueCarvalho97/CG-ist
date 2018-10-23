@@ -15,7 +15,7 @@ class Movable extends THREE.Object3D {
     }
 
     getPosition(){
-        return [this.position.x, this.posistion.y, this.position.z];
+        return [this.position.x, this.position.y, this.position.z];
     }
 
     getRandomInt(min, max) {
@@ -38,4 +38,6 @@ class Movable extends THREE.Object3D {
 
         return lim;
     }
+
+
 }

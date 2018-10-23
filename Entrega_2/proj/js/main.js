@@ -6,6 +6,8 @@ var clock;
 
 var ball;
 
+var balls = [];
+
 var angle = 0,
 	keys = [];
 
@@ -18,10 +20,11 @@ function createScene() {
 
 	for(var i = 0; i < 9; i++){
 		ball = new Ball(0,0,0,false);
+		balls.push(ball);
 	}
 
 	ball = new Ball(0,0,0,true);
-
+    balls.push(ball);
 }
 
 function createCameraOrthographic() {
@@ -162,6 +165,9 @@ function animate() {
 
 	var delta = clock.getDelta();
 
+	balls.forEach(function(element){
+		element.moveBall();
+	});
 
 	render();
 
