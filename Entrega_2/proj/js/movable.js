@@ -6,12 +6,21 @@ class Movable extends THREE.Object3D {
     }
 
     setRandom(){
-        var xx = this.getRandomInt(-100, 100);
-        var zz = this.getRandomInt(-50, 50);
+        var xx = this.getRandomInt(-90, 90);
+        var zz = this.getRandomInt(-45, 45);
 
-        this.position.x = this.limits(xx, 100, -100);
+        this.position.x = this.limits(xx, 90, -90);
         this.position.y = Math.sqrt(50000)/20;
-        this.position.z = this.limits(zz, 50, -50);
+        this.position.z = this.limits(zz, 45, -45);
+        for(var i = 0; i < balls.length; i++){
+          if(this.hasCollided(balls[i])){
+              this.setRandom();
+          }
+        }
+    }
+
+    hasCollided(obj){
+        return Math.pow(this.position.x - obj.position.x, 2) + Math.pow(this.position.z - obj.position.z, 2) <= Math.pow((Math.sqrt(50000)/10), 2) ;
     }
 
     getPosition(){

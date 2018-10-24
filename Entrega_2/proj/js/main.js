@@ -1,10 +1,10 @@
 var cameraOrthographic, cameraPerspective, cameraMovable, scene, renderer, cameraValue = 1;
 
-var geometry, material, mesh;
+var geometry, material, mesh, active = false;
 
-var clock;
+var clock, n = 40;
 
-var ball;
+var ball, auxBall = 10, delta;
 
 var balls = [];
 
@@ -30,10 +30,10 @@ function createScene() {
 function createCameraOrthographic() {
     if (window.innerHeight > window.innerWidth) {
         var aspectRatio = window.innerHeight / window.innerWidth;
-        cameraOrthographic = new THREE.OrthographicCamera( -150, 150, 150 * aspectRatio, -150 * aspectRatio, 1, 1000);
+        cameraOrthographic = new THREE.OrthographicCamera( -100, 100, 100 * aspectRatio, -100 * aspectRatio, 1, 1000);
     } else {
         var aspectRatio = window.innerWidth / window.innerHeight;
-        cameraOrthographic = new THREE.OrthographicCamera(-150 * aspectRatio, 150 * aspectRatio, 150, -150, 1, 1000);
+        cameraOrthographic = new THREE.OrthographicCamera(-100 * aspectRatio, 100 * aspectRatio, 100, -100, 1, 1000);
     }
 
 	cameraOrthographic.position.set(0,100,0);
@@ -92,25 +92,6 @@ function onResize() {
     // camera.updateProjectionMatrix();
 }
 
-function onKeyUp(e) {
-	'use strict';
-	// mark keys that were released
-	switch (e.keyCode) {
-		case 38:
-			chair.moveForward = false;
-			break;
-		case 40:
-			chair.moveBackwards = false;
-			break;
-		case 37:
-			chair.rotateLeft = false;
-			break;
-		case 39:
-			chair.rotateRight = false;
-			break;
-	}
-
-}
 
 function onKeyDown(e) {
 	'use strict';
@@ -123,7 +104,6 @@ function onKeyDown(e) {
 			cameraValue = 2;
 			break;
 		case 51: //3
-            alert("Por fazer! Usa outra camera");
 			cameraValue = 3;
 			break;
 		case 65: //A
@@ -134,6 +114,17 @@ function onKeyDown(e) {
 				}
 			});
 			break;
+		case 69:
+            balls.forEach(function(element){
+            	if(active){
+                    element.add(element.axisHelper);
+                }else{
+                    element.remove(element.axisHelper);
+                }
+            });
+            active = !active;
+            break;
+
 	}
 
 }
@@ -165,26 +156,42 @@ function init() {
 	createScene();
 	createCameraOrthographic();
 	createCameraPerspective();
-	// createCameraMovable();
+	createCameraMovable();
 
 	clock = new THREE.Clock();
+	clock.start();
+
 
 	render();
 
 	window.addEventListener("keydown", onKeyDown);
-	window.addEventListener("keyup", onKeyUp);
 	window.addEventListener("resize", onResize);
 
 }
 
-
 function animate() {
 	'use strict';
 
-	var delta = clock.getDelta();
+	var cnt = 0;
+	var collisions = [];
 
+	if(clock.getElapsedTime() > n){
+		balls.forEach(function(element){
+			element.increaseBallSpeed();
+		});
+		n += 40;
+
+	}
 	balls.forEach(function(element){
-		element.moveBall();
+		// auxBall = element.hasCollidedAnotherBall();
+		// if(auxBall !== 10 && !collisions.includes(cnt)){
+		// 	element.treatCollision(balls[auxBall]);
+		// 	balls[auxBall].treatCollision(element);
+		// 	collisions.push(auxBall, cnt);
+		// }
+        element.hasCollidedWall();
+        element.moveBall();
+        cnt++;
 	});
 
 	render();
