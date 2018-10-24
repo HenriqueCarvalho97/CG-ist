@@ -55,7 +55,7 @@ function createField(x, y, z){
     addShortWall(field, 100, Math.sqrt(50000)/20, 0);
     addShortWall(field, -100, Math.sqrt(50000)/20, 0);
 
-    field.add(new THREE.AxisHelper(20));
+    //field.add(new THREE.AxisHelper(20));
 
     scene.add(field);
 

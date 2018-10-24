@@ -27,6 +27,7 @@ class Ball extends Movable{
         scene.add(this);
 
         this.setRandom();
+
     }
 
     moveBall(){
@@ -34,7 +35,8 @@ class Ball extends Movable{
         this.position.z += this.speed * this.direction.z;
         // this.rotateOnAxis(new THREE.Vector3(1,0,0).normalize(),
         //     this.direction.x * this.speed / 8);
-        this.rotateOnAxis(new THREE.Vector3(this.direction.z, 0, -this.direction.x).normalize(),
+
+        this.rotateOnAxis(new THREE.Vector3(this.direction.z, 0, this.direction.x).normalize(),
             Math.sqrt(Math.pow(this.direction.x * this.speed, 2) + Math.pow(this.direction.z * this.speed, 2)) / 8);
     }
 

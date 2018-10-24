@@ -1,6 +1,6 @@
 var cameraOrthographic, cameraPerspective, cameraMovable, scene, renderer, cameraValue = 1;
 
-var geometry, material, mesh, active = false;
+var geometry, material, mesh, active = true;
 
 var clock, n = 40;
 
@@ -18,7 +18,7 @@ function createScene() {
 
 	createField(0, 0, 0);
 
-	for(var i = 0; i < 1; i++){
+	for(var i = 0; i < 9; i++){
 		ball = new Ball(0,0,0,false);
 		balls.push(ball);
 	}
@@ -53,20 +53,18 @@ function createCameraMovable() {
 
     var baller;
 
-    scene.traverse(function (node) {
-        if (node instanceof Ball) {
-            if(node.name == 'Player Ball'){
-                baller = node;
-            }
-        }
-    });
+    balls.forEach(function(element){
+    	if(element.name == 'Player Ball'){
+    		baller = element;
+    	}
+	});
 
-    cameraMovable = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 2, 3 * window.innerHeight);
-    cameraMovable.position.x = baller.position.x + 75;
-    cameraMovable.position.y = baller.position.y + 50;
-    cameraMovable.position.z = baller.position.z;
+    cameraMovable = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 2, 10 * window.innerHeight);
+    cameraMovable.position.x = baller.position.x + 100;
+    cameraMovable.position.y = 0;
+    cameraMovable.position.z = baller.position.z + 100;
     cameraMovable.lookAt(new THREE.Vector3(baller.position.x, baller.position.y, baller.position.z));
-
+    baller.add(cameraMovable);
 }
 
 function onResize() {
@@ -191,7 +189,7 @@ function animate() {
 		// }
         element.hasCollidedWall();
         element.moveBall();
-        cnt++;
+        // cnt++;
 	});
 
 	render();
