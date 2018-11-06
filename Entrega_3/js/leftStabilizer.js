@@ -35,7 +35,7 @@ class LeftStabilizer extends THREE.Object3D{
 
                 this.geometry.computeFaceNormals();
 
-                this.material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
+                this.material = new THREE.MeshLambertMaterial({ color: 0x00ff00 });
 
                 this.mesh1 = new THREE.Mesh(this.geometry, this.material);
                 this.mesh1.position.set(x, 19, 0);

@@ -3,45 +3,38 @@
 class Cockpit extends THREE.Object3D{
 
 	constructor(x, y, z){
-                super();		
+	    super();
 
 
-		this.geometry = new THREE.Geometry(); 
-                this.geometry.vertices.push(
-                        new THREE.Vector3(-25, -7, -15),
-                        new THREE.Vector3(-70, -7, -15),
-                        new THREE.Vector3(-25, 27, -15),
-                        
-                        new THREE.Vector3(-25, -7, 10),
-                        new THREE.Vector3(-70, -7, 10),
-                        new THREE.Vector3(-25, 27, 10));
-                
-                //Front Face
-                this.geometry.faces.push(new THREE.Face3(0, 1, 2));
-                this.geometry.faces.push(new THREE.Face3(3, 4, 5));
+        this.geometry = new THREE.Geometry();
 
-                //Back Face
-                this.geometry.faces.push(new THREE.Face3(0, 3, 2));
-                this.geometry.faces.push(new THREE.Face3(2, 5, 3));
+        this.geometry.vertices.push(new THREE.Vector3(0, 0, 5));
+        this.geometry.vertices.push(new THREE.Vector3(0, 0, -5));
+        this.geometry.vertices.push(new THREE.Vector3(15, -5, 5));
+        this.geometry.vertices.push(new THREE.Vector3(15, -5, -5));
+        this.geometry.vertices.push(new THREE.Vector3(15, 3, 5));
+        this.geometry.vertices.push(new THREE.Vector3(15, 3, -5));
 
-                //Top Face
-                this.geometry.faces.push(new THREE.Face3(2, 5, 1));
-                this.geometry.faces.push(new THREE.Face3(5, 1, 4));
+        this.geometry.faces.push(new THREE.Face3(0, 1, 2));
+        this.geometry.faces.push(new THREE.Face3(0, 2, 4));
+        this.geometry.faces.push(new THREE.Face3(4, 2, 3));
+        this.geometry.faces.push(new THREE.Face3(3, 4, 5));
+        this.geometry.faces.push(new THREE.Face3(0, 4, 1));
+        this.geometry.faces.push(new THREE.Face3(5, 4, 1));
+        this.geometry.faces.push(new THREE.Face3(5, 3, 1));
 
-                //Bottom Face
-                this.geometry.faces.push(new THREE.Face3(4, 1, 0));
-                this.geometry.faces.push(new THREE.Face3(4, 3, 0));
+        this.geometry.computeFaceNormals();
 
+        this.material = new THREE.MeshLambertMaterial({ color: 0xff0000, side: THREE.DoubleSide});
 
-                this.geometry.computeFaceNormals();
+        this.mesh1 = new THREE.Mesh(this.geometry, this.material);
+        this.mesh1.position.set(x,y,z);
+        scene.add(this.mesh1);
 
-                this.material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
-
-                this.mesh1 = new THREE.Mesh(this.geometry, this.material);
-                this.mesh1.position.set(-50, 27, -3);
-
-                this.mesh1.rotation.y = Math.PI;
-
-                scene.add(this.mesh1);
 	}
+
+    rotateLeft(){
+        this.mesh1.rotation.x += 0.1;
+    }
+
 }

@@ -4,7 +4,7 @@ var geometry, material, mesh, active = true;
 
 var clock, n = 40;
 
-var body, front, propeller, wing, wingRight, verticalStabilizer, rightStabilizer, leftStabilizer, cockpit;
+var body, front, propeller, wingLeft, wingRight, verticalStabilizer;
 
 var balls = [];
 
@@ -16,31 +16,17 @@ function createScene() {
 
 	scene = new THREE.Scene();
 
-    var axesHelper = new THREE.AxisHelper( 50 );
-    scene.add( axesHelper );
+    body = new Body(0, 6, 0);
 
-    body = new Body(0, 0, 0);
-	//
-	wing = new Wing(0, 0, 0);
-	//
-    // wingRight = new WingRight(0, 6, 0);
-	//
-    // verticalStabilizer = new VerticalStabilizer(0, 6, 0);
-	//
-    // rightStabilizer = new RightStabilizer(0, 6, 0);
-	//
-    // leftStabilizer = new LeftStabilizer(0, 6, 0);
-	//
-    cockpit = new Cockpit(0, 0, 0);
+    front = new Front(0, 6, 0);
 
-    // var ambientLight = new THREE.AmbientLight( 0x777777 );
-    // scene.add( ambientLight );
+    propeller = new Propeller(0, 6, 0);
 
-    var light = new THREE.DirectionalLight(0xffffff, 1);
-    light.position.x = 80;
-    light.position.y = 80;
-    light.position.z = 80;
-    scene.add(light);
+    wingLeft = new WingLeft(0, 6, 0);
+
+    wingRight = new WingRight(0, 6, 0);
+
+    //verticalStabilizer = new VerticalStabilizer(0, 6, 0);
 }
 
 function createCameraOrthographic() {
@@ -52,7 +38,7 @@ function createCameraOrthographic() {
         cameraOrthographic = new THREE.OrthographicCamera(-100 * aspectRatio, 100 * aspectRatio, 100, -100, 1, 1000);
     }
 
-	cameraOrthographic.position.set(100,0,0);
+	cameraOrthographic.position.set(0,0,100);
 	cameraOrthographic.lookAt(scene.position);
 }
 
@@ -60,7 +46,7 @@ function createCameraPerspective() {
 	'use strict';
 
 	cameraPerspective = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 3 * window.innerHeight);
-	cameraPerspective.position.set(150,150,150);
+	cameraPerspective.position.set(100,60,0);
 	cameraPerspective.lookAt(scene.position);
 }
 
@@ -111,9 +97,14 @@ function onKeyDown(e) {
 			});
 			break;
 		case 69:
-			body.rotateLeft();
-			cockpit.rotateLeft();
-			wing.rotateLeft();
+            balls.forEach(function(element){
+            	if(active){
+                    element.add(element.axisHelper);
+                }else{
+                    element.remove(element.axisHelper);
+                }
+            });
+            active = !active;
             break;
 
 	}
@@ -149,8 +140,6 @@ function init() {
 	createCameraPerspective();
 	//createCameraMovable();
 
-	createLights();
-
 	clock = new THREE.Clock();
 	clock.start();
 
@@ -164,6 +153,8 @@ function init() {
 
 function animate() {
 	'use strict';
+
+
 
 	render();
 
