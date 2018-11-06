@@ -1,6 +1,6 @@
 'use strict';
 
-class VerticalStabilizer extends THREE.Object3D{
+class VerticalStabilizer extends AirplaneComponent{
 
 	constructor(x, y, z){
                 super();		

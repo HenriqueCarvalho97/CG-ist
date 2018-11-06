@@ -6,10 +6,9 @@ var clock, n = 40;
 
 var body, front, propeller, wing, verticalStabilizer, sideStabilizer, cockpit;
 
-var balls = [];
+var angle = 0;
 
-var angle = 0,
-	keys = [];
+var airplane = [];
 
 function createScene() {
 	'use strict';
@@ -26,11 +25,10 @@ function createScene() {
     verticalStabilizer = new VerticalStabilizer(0, 0, 0);
 
     sideStabilizer = new SideStabilizer(0, 0, 0);
-	//
-    // leftStabilizer = new LeftStabilizer(0, 6, 0);
-	//
+
     cockpit = new Cockpit(0, 0, 0);
 
+    airplane.push(body, wing, verticalStabilizer, sideStabilizer, cockpit);
     // var ambientLight = new THREE.AmbientLight( 0x777777 );
     // scene.add( ambientLight );
 
@@ -109,11 +107,9 @@ function onKeyDown(e) {
 			});
 			break;
 		case 69:
-			body.rotateLeft();
-			cockpit.rotateLeft();
-			wing.rotateLeft();
-			verticalStabilizer.rotateLeft();
-			sideStabilizer.rotateLeft();
+			airplane.forEach(function e(element){
+				element.rotateLeft();
+			});
             break;
 
 	}

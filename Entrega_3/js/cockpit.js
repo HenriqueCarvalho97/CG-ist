@@ -1,6 +1,6 @@
 'use strict';
 
-class Cockpit extends THREE.Object3D{
+class Cockpit extends AirplaneComponent{
 
 	constructor(x, y, z){
 	    super();
@@ -32,9 +32,5 @@ class Cockpit extends THREE.Object3D{
         scene.add(this.mesh1);
 
 	}
-
-    rotateLeft(){
-        this.mesh1.rotation.x += 0.1;
-    }
 
 }

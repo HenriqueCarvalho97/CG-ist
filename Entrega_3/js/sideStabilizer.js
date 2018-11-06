@@ -1,6 +1,6 @@
 'use strict';
 
-class SideStabilizer extends THREE.Object3D{
+class SideStabilizer extends AirplaneComponent{
 
 	constructor(x, y, z){
                 super();

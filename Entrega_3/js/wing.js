@@ -1,6 +1,6 @@
 'use strict';
 
-class Wing extends THREE.Object3D{
+class Wing extends AirplaneComponent{
 
 	constructor(x, y, z){
 	    super();
@@ -54,9 +54,5 @@ class Wing extends THREE.Object3D{
         this.mesh1.position.set(x, y, z);
         scene.add(this.mesh1);
 	}
-
-    rotateLeft(){
-        this.mesh1.rotation.x += 0.1;
-    }
 
 }
