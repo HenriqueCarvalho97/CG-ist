@@ -4,7 +4,7 @@ var geometry, material, mesh, active = true;
 
 var clock, n = 40;
 
-var body, front, propeller, wing, wingRight, verticalStabilizer, rightStabilizer, leftStabilizer, cockpit;
+var body, front, propeller, wing, verticalStabilizer, sideStabilizer, cockpit;
 
 var balls = [];
 
@@ -20,14 +20,12 @@ function createScene() {
     scene.add( axesHelper );
 
     body = new Body(0, 0, 0);
-	//
+
 	wing = new Wing(0, 0, 0);
-	//
-    // wingRight = new WingRight(0, 6, 0);
-	//
-    // verticalStabilizer = new VerticalStabilizer(0, 6, 0);
-	//
-    // rightStabilizer = new RightStabilizer(0, 6, 0);
+
+    verticalStabilizer = new VerticalStabilizer(0, 0, 0);
+
+    sideStabilizer = new SideStabilizer(0, 0, 0);
 	//
     // leftStabilizer = new LeftStabilizer(0, 6, 0);
 	//
@@ -60,7 +58,7 @@ function createCameraPerspective() {
 	'use strict';
 
 	cameraPerspective = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 3 * window.innerHeight);
-	cameraPerspective.position.set(150,150,150);
+	cameraPerspective.position.set(-10,100,100);
 	cameraPerspective.lookAt(scene.position);
 }
 
@@ -114,6 +112,8 @@ function onKeyDown(e) {
 			body.rotateLeft();
 			cockpit.rotateLeft();
 			wing.rotateLeft();
+			verticalStabilizer.rotateLeft();
+			sideStabilizer.rotateLeft();
             break;
 
 	}

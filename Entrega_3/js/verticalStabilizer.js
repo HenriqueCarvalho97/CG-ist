@@ -6,40 +6,48 @@ class VerticalStabilizer extends THREE.Object3D{
                 super();		
 
 
-		this.geometry = new THREE.Geometry(); 
-                this.geometry.vertices.push(
-                        new THREE.Vector3(-55, -4, 3),
-                        new THREE.Vector3(-70, -4, 3),
-                        new THREE.Vector3(-55, 54, 3),
-                        
-                        new THREE.Vector3(-55, -4, 5),
-                        new THREE.Vector3(-70, -4, 5),
-                        new THREE.Vector3(-55, 54, 5));
-                
-                //Front Face
-                this.geometry.faces.push(new THREE.Face3(0, 1, 2));
-                this.geometry.faces.push(new THREE.Face3(3, 4, 5));
+		this.geometry = new THREE.Geometry();
 
-                //Back Face
-                this.geometry.faces.push(new THREE.Face3(0, 3, 2));
-                this.geometry.faces.push(new THREE.Face3(2, 5, 3));
+        this.geometry.vertices.push(new THREE.Vector3(-48, 10, -1));
+        this.geometry.vertices.push(new THREE.Vector3(-48, 32, -1));
+        this.geometry.vertices.push(new THREE.Vector3(-44, 10, -1));
+        this.geometry.vertices.push(new THREE.Vector3(-44, 32, -1));
 
-                //Top Face
-                this.geometry.faces.push(new THREE.Face3(2, 5, 1));
-                this.geometry.faces.push(new THREE.Face3(5, 1, 4));
+        this.geometry.vertices.push(new THREE.Vector3(-48, 10, 1));
+        this.geometry.vertices.push(new THREE.Vector3(-48, 32, 1));
+        this.geometry.vertices.push(new THREE.Vector3(-44, 10, 1));
+        this.geometry.vertices.push(new THREE.Vector3(-44, 32, 1));
 
-                //Bottom Face
-                this.geometry.faces.push(new THREE.Face3(4, 1, 0));
-                this.geometry.faces.push(new THREE.Face3(4, 3, 0));
+        this.geometry.vertices.push(new THREE.Vector3(-37, 10, 0));
 
+        //LEFT AND RIGHT SIDES OF STABILIZER
+        this.geometry.faces.push(new THREE.Face3(0,1,2));
+        this.geometry.faces.push(new THREE.Face3(1,3,2));
+        this.geometry.faces.push(new THREE.Face3(4,5,6));
+        this.geometry.faces.push(new THREE.Face3(5,7,6));
 
-                this.geometry.computeFaceNormals();
+        //JOIN TWO SIDES
+        this.geometry.faces.push(new THREE.Face3(0,1,4));
+        this.geometry.faces.push(new THREE.Face3(5,1,4));
+        this.geometry.faces.push(new THREE.Face3(1,3,5));
+        this.geometry.faces.push(new THREE.Face3(7,3,5));
 
-        this.material = new THREE.MeshLambertMaterial({ color: 0x00ff00 });
+        //FRONTAL PART OF STABILIZER
+        this.geometry.faces.push(new THREE.Face3(7,6,8));
+        this.geometry.faces.push(new THREE.Face3(3,2,8));
+        this.geometry.faces.push(new THREE.Face3(3,7,8));
 
-                this.mesh1 = new THREE.Mesh(this.geometry, this.material);
-                this.mesh1.position.set(x, 27, -4);
+        this.geometry.computeFaceNormals();
 
-                scene.add(this.mesh1);
+        this.material = new THREE.MeshLambertMaterial({ color: 0x00ff00, side: THREE.DoubleSide });
+
+        this.mesh1 = new THREE.Mesh(this.geometry, this.material);
+        this.mesh1.position.set(x,y, z);
+
+        scene.add(this.mesh1);
 	}
+
+    rotateLeft(){
+        this.mesh1.rotation.x += 0.1;
+    }
 }
