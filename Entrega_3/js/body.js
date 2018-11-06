@@ -3,7 +3,7 @@
 class Body extends AirplaneComponent{
 
 	constructor(x, y, z){
-            super();		
+            super();
 
 			this.geometry = new THREE.Geometry();
             this.geometry.vertices.push(new THREE.Vector3(-48, -16, 12));
@@ -70,9 +70,13 @@ class Body extends AirplaneComponent{
             this.geometry.computeFaceNormals();
 
             this.material = new THREE.MeshLambertMaterial({ color: 0x00ffff, side: THREE.DoubleSide});
+            this.oldMaterial = 1;
 
             this.mesh1 = new THREE.Mesh(this.geometry, this.material);
             this.mesh1.position.set(x,y,z);
+
+            var axis = new THREE.AxisHelper(50);
+            this.mesh1.add(axis);
             scene.add(this.mesh1);
 	}
 

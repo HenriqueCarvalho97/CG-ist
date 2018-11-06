@@ -1,10 +1,8 @@
-var cameraOrthographic, cameraPerspective, cameraMovable, scene, renderer, cameraValue = 1;
+var cameraPerspective, scene, renderer;
 
-var geometry, material, mesh, active = true;
+var geometry, material, mesh;
 
-var clock, n = 40;
-
-var body, front, propeller, wing, verticalStabilizer, sideStabilizer, cockpit;
+var body, front, propeller, wing, verticalStabilizer, sideStabilizer, cockpit, sun;
 
 var angle = 0;
 
@@ -14,9 +12,6 @@ function createScene() {
 	'use strict';
 
 	scene = new THREE.Scene();
-
-    var axesHelper = new THREE.AxisHelper( 50 );
-    scene.add( axesHelper );
 
     body = new Body(0, 0, 0);
 
@@ -29,59 +24,53 @@ function createScene() {
     cockpit = new Cockpit(0, 0, 0);
 
     airplane.push(body, wing, verticalStabilizer, sideStabilizer, cockpit);
-    // var ambientLight = new THREE.AmbientLight( 0x777777 );
-    // scene.add( ambientLight );
 
-    var light = new THREE.DirectionalLight(0xffffff, 1);
-    light.position.x = 80;
-    light.position.y = 80;
-    light.position.z = 80;
-    scene.add(light);
 }
 
-function createCameraOrthographic() {
-    if (window.innerHeight > window.innerWidth) {
-        var aspectRatio = window.innerHeight / window.innerWidth;
-        cameraOrthographic = new THREE.OrthographicCamera( -100, 100, 100 * aspectRatio, -100 * aspectRatio, 1, 1000);
-    } else {
-        var aspectRatio = window.innerWidth / window.innerHeight;
-        cameraOrthographic = new THREE.OrthographicCamera(-100 * aspectRatio, 100 * aspectRatio, 100, -100, 1, 1000);
-    }
+function createSun(){
+    sun = new THREE.DirectionalLight(0xffffff, 1);
+    sun.position.x = 80;
+    sun.position.y = 80;
+    sun.position.z = 80;
+    scene.add(sun);
+}
 
-	cameraOrthographic.position.set(-100,0,0);
-	cameraOrthographic.lookAt(scene.position);
+function toggleSun(){
+	if(sun.intensity === 1)
+		sun.intensity = 0;
+	else
+		sun.intensity = 1;
 }
 
 function createCameraPerspective() {
 	'use strict';
 
 	cameraPerspective = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 3 * window.innerHeight);
-	cameraPerspective.position.set(-10,100,100);
+	cameraPerspective.position.set(-10,200,200);
 	cameraPerspective.lookAt(scene.position);
 }
 
 
 function onResize() {
-	// 'use strict';
-	//
-    // if (window.innerHeight > window.innerWidth) {
-    //     var aspectRatio = window.innerHeight / window.innerWidth;
-    //     camera.left = -200 / 2;
-    //     camera.right = 200 / 2;
-    //     camera.top = 100 * aspectRatio;
-    //     camera.bottom = -100 * aspectRatio;
-	//
-    // } else {
-    //     var aspectRatio = window.innerWidth / window.innerHeight;
-    //     camera.left = -200 * aspectRatio / 2;
-    //     camera.right = 200 * aspectRatio / 2;
-    //     camera.top = 100;
-    //     camera.bottom = -100;
-    // }
-	//
-    // renderer.setSize(window.innerWidth, window.innerHeight);
-    // camera.aspect = aspectRatio;
-    // camera.updateProjectionMatrix();
+	'use strict';
+
+    if (window.innerHeight > window.innerWidth) {
+        var aspectRatio = window.innerHeight / window.innerWidth;
+        cameraPerspective.left = -200 / 2;
+        cameraPerspective.right = 200 / 2;
+        cameraPerspective.top = 100 * aspectRatio;
+        cameraPerspective.bottom = -100 * aspectRatio;
+    } else {
+        var aspectRatio = window.innerWidth / window.innerHeight;
+        cameraPerspective.left = -200 * aspectRatio / 2;
+        cameraPerspective.right = 200 * aspectRatio / 2;
+        cameraPerspective.top = 100;
+        cameraPerspective.bottom = -100;
+    }
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    cameraPerspective.aspect = aspectRatio;
+    cameraPerspective.updateProjectionMatrix();
 }
 
 
@@ -89,15 +78,6 @@ function onKeyDown(e) {
 	'use strict';
 
 	switch (e.keyCode) {
-		case 49: //1
-			cameraValue = 1;
-			break;
-		case 50: //2
-			cameraValue = 2;
-			break;
-		case 51: //3
-			cameraValue = 3;
-			break;
 		case 65: //A
 		case 97: //a
 			scene.traverse(function (node) {
@@ -126,25 +106,23 @@ function onKeyDown(e) {
 				element.rotateDown();
 			});
             break;
-
+        //N
+		case 78:
+			toggleSun();
+			break;
+		//L
+		case 76:
+			airplane.forEach(function e(element){
+				element.toggleLighting();
+			});
+			break;
 
 	}
-
 }
 
 function render() {
     'use strict';
-    switch (cameraValue) {
-        case 1:
-            renderer.render(scene, cameraOrthographic);
-            break;
-        case 2:
-            renderer.render(scene, cameraPerspective);
-            break;
-        case 3:
-            renderer.render(scene, cameraMovable);
-            break;
-    }
+    renderer.render(scene, cameraPerspective);
 }
 
 function init() {
@@ -157,15 +135,8 @@ function init() {
 	document.body.appendChild(renderer.domElement);
 
 	createScene();
-	createCameraOrthographic();
 	createCameraPerspective();
-	//createCameraMovable();
-
-	createLights();
-
-	clock = new THREE.Clock();
-	clock.start();
-
+    createSun();
 
 	render();
 
