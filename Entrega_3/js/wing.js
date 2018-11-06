@@ -23,34 +23,38 @@ class Wing extends AirplaneComponent{
         this.geometry.vertices.push(new THREE.Vector3(-16, -3, -60));
 
         this.geometry.faces.push(new THREE.Face3(2, 1, 0));
-        this.geometry.faces.push(new THREE.Face3(2, 3, 0));
-        this.geometry.faces.push(new THREE.Face3(4, 3, 2));
+        this.geometry.faces.push(new THREE.Face3(3, 2, 0));
+        this.geometry.faces.push(new THREE.Face3(3, 4, 2));
         this.geometry.faces.push(new THREE.Face3(0, 5, 6));
-        this.geometry.faces.push(new THREE.Face3(0, 3, 6));
-        this.geometry.faces.push(new THREE.Face3(6, 3, 4));
-
+        this.geometry.faces.push(new THREE.Face3(3, 0, 6));
+        this.geometry.faces.push(new THREE.Face3(3, 6, 4));
+        //
         this.geometry.faces.push(new THREE.Face3(1, 2, 7));
-        this.geometry.faces.push(new THREE.Face3(8, 2, 7));
+        this.geometry.faces.push(new THREE.Face3(7, 2, 8));
         this.geometry.faces.push(new THREE.Face3(9, 0, 7));
-        this.geometry.faces.push(new THREE.Face3(1, 0, 7));
+        this.geometry.faces.push(new THREE.Face3(0, 1, 7));
         this.geometry.faces.push(new THREE.Face3(7, 8, 9));
-        this.geometry.faces.push(new THREE.Face3(10, 8, 9));
+        this.geometry.faces.push(new THREE.Face3(8, 10, 9));
         this.geometry.faces.push(new THREE.Face3(10, 8, 4));
         this.geometry.faces.push(new THREE.Face3(8, 2, 4));
-        this.geometry.faces.push(new THREE.Face3(5, 6, 11));
-        this.geometry.faces.push(new THREE.Face3(12, 6, 11));
+        this.geometry.faces.push(new THREE.Face3(6, 5, 11));
+        this.geometry.faces.push(new THREE.Face3(11, 12, 6));
         this.geometry.faces.push(new THREE.Face3(11, 5, 0));
-        this.geometry.faces.push(new THREE.Face3(11, 9, 0));
+        this.geometry.faces.push(new THREE.Face3(9, 11, 0));
         this.geometry.faces.push(new THREE.Face3(11, 9, 12));
         this.geometry.faces.push(new THREE.Face3(9, 10, 12));
-        this.geometry.faces.push(new THREE.Face3(4, 10, 12));
+        this.geometry.faces.push(new THREE.Face3(10, 4, 12));
         this.geometry.faces.push(new THREE.Face3(4, 6, 12));
 
         this.geometry.computeFaceNormals();
 
-        this.material = new THREE.MeshLambertMaterial({ color: 0xff00ff, side: THREE.DoubleSide});
 
-        this.mesh1 = new THREE.Mesh(this.geometry, this.material);
+        var lambMaterial = new THREE.MeshLambertMaterial({color: 0x00ffff});
+        lambMaterial.shading = THREE.FlatShading;
+        lambMaterial.shading = THREE.SmoothShading;
+        this.geometry.normalsNeedUpdate = true;
+
+        this.mesh1 = new THREE.Mesh(this.geometry, lambMaterial);
         this.mesh1.position.set(x, y, z);
         scene.add(this.mesh1);
 	}

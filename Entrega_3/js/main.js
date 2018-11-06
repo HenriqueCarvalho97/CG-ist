@@ -6,6 +6,8 @@ var body, front, propeller, wing, verticalStabilizer, sideStabilizer, cockpit, s
 
 var angle = 0;
 
+var spotlight1, spotlight2, spotlight3, spotlight4;
+
 var airplane = [];
 
 function createScene() {
@@ -16,6 +18,14 @@ function createScene() {
     body = new Body(0, 0, 0);
 
 	wing = new Wing(0, 0, 0);
+
+    var planeGeo = new THREE.PlaneGeometry(600,900);
+    var planeMaterial = new THREE.MeshPhongMaterial( { color: 0x555555, specular: 0x112211, shininess: 5, wireframe: false } );
+    planeMaterial.side = THREE.DoubleSide;
+    var planeMesh = new THREE.Mesh( planeGeo, planeMaterial);
+    planeMesh.rotation.x = Math.PI * .5;
+    planeMesh.position.set(0,-60,0);
+    scene.add( planeMesh );
 
     verticalStabilizer = new VerticalStabilizer(0, 0, 0);
 
@@ -116,7 +126,12 @@ function onKeyDown(e) {
 				element.toggleLighting();
 			});
 			break;
-
+		//G
+		case 71:
+			airplane.forEach(function e(element){
+				element.toggleShadow();
+			});
+			break;
 	}
 }
 
@@ -137,6 +152,8 @@ function init() {
 	createScene();
 	createCameraPerspective();
     createSun();
+
+	createSpotlight(0,100,0);
 
 	render();
 

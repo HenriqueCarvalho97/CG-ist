@@ -25,9 +25,12 @@ class Cockpit extends AirplaneComponent{
 
         this.geometry.computeFaceNormals();
 
-        this.material = new THREE.MeshLambertMaterial({ color: 0xff0000, side: THREE.DoubleSide});
+        var lambMaterial = new THREE.MeshLambertMaterial({color: 0xffff00});
+        lambMaterial.shading = THREE.FlatShading;
+        lambMaterial.shading = THREE.SmoothShading;
+        this.geometry.normalsNeedUpdate = true;
 
-        this.mesh1 = new THREE.Mesh(this.geometry, this.material);
+        this.mesh1 = new THREE.Mesh(this.geometry, lambMaterial);
         this.mesh1.position.set(x,y,z);
         scene.add(this.mesh1);
 
