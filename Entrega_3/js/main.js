@@ -6,7 +6,7 @@ var body, front, propeller, wing, verticalStabilizer, sideStabilizer, cockpit, s
 
 var angle = 0;
 
-var spotlight1, spotlight2, spotlight3, spotlight4;
+var pointlight1, pointlight2, pointlight3, pointlight4;
 
 var airplane = [];
 
@@ -56,7 +56,7 @@ function createCameraPerspective() {
 	'use strict';
 
 	cameraPerspective = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 3 * window.innerHeight);
-	cameraPerspective.position.set(-10,200,200);
+	cameraPerspective.position.set(10,75,-200);
 	cameraPerspective.lookAt(scene.position);
 }
 
@@ -132,6 +132,18 @@ function onKeyDown(e) {
 				element.toggleShadow();
 			});
 			break;
+		case 49:
+			pointlight1.toggleLight();
+			break;
+		case 50:
+			pointlight2.toggleLight();
+			break;
+		case 51:
+			pointlight3.toggleLight();
+			break;
+		case 52:
+			pointlight4.toggleLight();
+			break;
 	}
 }
 
@@ -153,7 +165,10 @@ function init() {
 	createCameraPerspective();
     createSun();
 
-	createSpotlight(0,100,0);
+	pointlight1 = new Pointlight(50,90,-80);
+	pointlight2 = new Pointlight(-50,90,-80);
+	pointlight3 = new Pointlight(50,90,80);
+	pointlight4 = new Pointlight(-50,90,80);
 
 	render();
 

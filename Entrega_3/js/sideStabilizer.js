@@ -45,9 +45,7 @@ class SideStabilizer extends AirplaneComponent{
         this.geometry.faces.push(new THREE.Face3(10, 4, 12));
         this.geometry.faces.push(new THREE.Face3(4, 6, 12));
 
-
         this.geometry.computeFaceNormals();
-
 
         var lambMaterial = new THREE.MeshLambertMaterial({color: 0x00ff00});
         lambMaterial.shading = THREE.FlatShading;
