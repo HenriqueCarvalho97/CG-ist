@@ -6,7 +6,19 @@ class AirplaneComponent extends THREE.Object3D {
     }
 
 
-    rotateLeft(){
+    rotateRight(){
         this.mesh1.rotation.x += 0.1;
+    }
+
+    rotateLeft(){
+        this.mesh1.rotation.x -= 0.1;
+    }
+
+    rotateUp(){
+        this.mesh1.rotation.z += 0.1;
+    }
+
+    rotateDown(){
+        this.mesh1.rotation.z -= 0.1;
     }
 }

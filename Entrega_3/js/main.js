@@ -48,7 +48,7 @@ function createCameraOrthographic() {
         cameraOrthographic = new THREE.OrthographicCamera(-100 * aspectRatio, 100 * aspectRatio, 100, -100, 1, 1000);
     }
 
-	cameraOrthographic.position.set(100,0,0);
+	cameraOrthographic.position.set(-100,0,0);
 	cameraOrthographic.lookAt(scene.position);
 }
 
@@ -106,11 +106,27 @@ function onKeyDown(e) {
 				}
 			});
 			break;
-		case 69:
+		case 39:
+			airplane.forEach(function e(element){
+				element.rotateRight();
+			});
+            break;
+		case 37:
 			airplane.forEach(function e(element){
 				element.rotateLeft();
 			});
             break;
+		case 38:
+			airplane.forEach(function e(element){
+				element.rotateUp();
+			});
+            break;
+		case 40:
+			airplane.forEach(function e(element){
+				element.rotateDown();
+			});
+            break;
+
 
 	}
 

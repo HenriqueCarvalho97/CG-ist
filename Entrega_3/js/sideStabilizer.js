@@ -53,11 +53,6 @@ class SideStabilizer extends AirplaneComponent{
         this.mesh1 = new THREE.Mesh(this.geometry, this.material);
         this.mesh1.position.set(x, y, z);
 
-
         scene.add(this.mesh1);
 	}
-
-    rotateLeft(){
-        this.mesh1.rotation.x += 0.1;
-    }
 }

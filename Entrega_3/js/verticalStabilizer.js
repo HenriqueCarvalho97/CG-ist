@@ -46,8 +46,4 @@ class VerticalStabilizer extends AirplaneComponent{
 
         scene.add(this.mesh1);
 	}
-
-    rotateLeft(){
-        this.mesh1.rotation.x += 0.1;
-    }
 }
