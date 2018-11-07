@@ -3,6 +3,8 @@
 class AirplaneComponent extends THREE.Object3D {
     constructor(x, y, z) {
         super();
+
+        //The directionAxis is used to rotate the airplane in it's x axis and not in the world's axis.
         this.directionAxis = new THREE.Vector3(1,0,0);
         this.lightingOn = true;
         this.lamb = true;
@@ -24,6 +26,12 @@ class AirplaneComponent extends THREE.Object3D {
         this.mesh1.rotation.z -= 0.1;
     }
 
+    /*
+        In case key "L" is pressed change the lighting calculus on/off.
+        We use a flag to check if is on or off.
+        If it's off and we want to turn it on we use the flag lamb to recall if the previous state was with Lambert or
+        Phong material, and reassign the respective material.
+     */
     toggleLighting(){
         let thiscolor = this.mesh1.material.color;
         if(this.lightingOn)
@@ -49,6 +57,9 @@ class AirplaneComponent extends THREE.Object3D {
         this.lightingOn = !this.lightingOn;
     }
 
+    /*
+        In case the key "G" is pressed we change from a LambertMaterial to a PhongMaterial.
+     */
     toggleShadow(){
         let thiscolor = this.mesh1.material.color;
         if(!this.lamb) {

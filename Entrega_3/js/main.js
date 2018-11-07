@@ -2,7 +2,7 @@ var cameraPerspective, scene, renderer;
 
 var geometry, material, mesh;
 
-var body, front, propeller, wing, verticalStabilizer, sideStabilizer, cockpit, sun;
+var body, wing, verticalStabilizer, sideStabilizer, cockpit, sun;
 
 var angle = 0;
 
@@ -19,14 +19,6 @@ function createScene() {
 
 	wing = new Wing(0, 0, 0);
 
-    var planeGeo = new THREE.PlaneGeometry(600,900);
-    var planeMaterial = new THREE.MeshPhongMaterial( { color: 0x555555, specular: 0x112211, shininess: 5, wireframe: false } );
-    planeMaterial.side = THREE.DoubleSide;
-    var planeMesh = new THREE.Mesh( planeGeo, planeMaterial);
-    planeMesh.rotation.x = Math.PI * .5;
-    planeMesh.position.set(0,-60,0);
-    scene.add( planeMesh );
-
     verticalStabilizer = new VerticalStabilizer(0, 0, 0);
 
     sideStabilizer = new SideStabilizer(0, 0, 0);
@@ -38,13 +30,17 @@ function createScene() {
 }
 
 function createSun(){
-    sun = new THREE.DirectionalLight(0xffffff, 1);
-    sun.position.x = 80;
-    sun.position.y = 80;
-    sun.position.z = 80;
+	//Creates a directionalLight with color 0xffffee and intensity 1
+    sun = new THREE.DirectionalLight(0xffffee, 1);
+    sun.position.x = 60;
+    sun.position.y = 120;
+    sun.position.z = 0;
     scene.add(sun);
 }
 
+/*
+	Function to turn On or Off the Sun. Key "N"
+ */
 function toggleSun(){
 	if(sun.intensity === 1)
 		sun.intensity = 0;
@@ -96,54 +92,64 @@ function onKeyDown(e) {
 				}
 			});
 			break;
-		case 39:
+
+		case 39: // Right Arrow
 			airplane.forEach(function e(element){
 				element.rotateRight();
 			});
             break;
-		case 37:
+
+		case 37: // Left Arrow
 			airplane.forEach(function e(element){
 				element.rotateLeft();
 			});
             break;
-		case 38:
+
+		case 38: // Up Arrow
 			airplane.forEach(function e(element){
 				element.rotateUp();
 			});
             break;
-		case 40:
+
+		case 40: // Down Arrow
 			airplane.forEach(function e(element){
 				element.rotateDown();
 			});
             break;
-        //N
-		case 78:
+
+		case 78: //N - Sun On/Off
 			toggleSun();
 			break;
-		//L
-		case 76:
+
+		case 76: //L - Lighting Calculus On/Off
 			airplane.forEach(function e(element){
 				element.toggleLighting();
 			});
 			break;
-		//G
-		case 71:
+
+		case 71: //G - Phong vs Lambert Material
 			airplane.forEach(function e(element){
 				element.toggleShadow();
 			});
 			break;
-		case 49:
+
+		//LightBulbs On/Off
+		case 49: //1
 			pointlight1.toggleLight();
 			break;
-		case 50:
+
+		case 50: //2
 			pointlight2.toggleLight();
 			break;
-		case 51:
+
+		case 51: //3
 			pointlight3.toggleLight();
 			break;
-		case 52:
+
+		case 52: //4
 			pointlight4.toggleLight();
 			break;
+
 	}
 }
 

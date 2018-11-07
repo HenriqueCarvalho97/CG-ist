@@ -49,7 +49,7 @@ class Wing extends AirplaneComponent{
         this.geometry.computeFaceNormals();
 
 
-        var lambMaterial = new THREE.MeshLambertMaterial({color: 0x00ffff});
+        var lambMaterial = new THREE.MeshLambertMaterial({color: 0xbbc9e8});
         lambMaterial.shading = THREE.FlatShading;
         lambMaterial.shading = THREE.SmoothShading;
         this.geometry.normalsNeedUpdate = true;

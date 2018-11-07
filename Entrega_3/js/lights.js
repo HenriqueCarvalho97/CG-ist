@@ -1,6 +1,9 @@
 'use strict'
 
 class Pointlight extends THREE.SpotLight{
+    /*
+        Creates a a LightBulb and a Pointlight for each
+     */
     constructor(x,y,z){
         super();
 
@@ -11,6 +14,9 @@ class Pointlight extends THREE.SpotLight{
         scene.add(this.light);
     }
 
+    /*
+        For each LightBulb with Keys "1", "2", "3" or "4" turns on/off the light
+     */
     toggleLight(){
         this.light.visible = !this.light.visible;
         if(!this.light.visible)
@@ -19,6 +25,10 @@ class Pointlight extends THREE.SpotLight{
             this.sphere.material.color.setHex(0xffff66);
     }
 
+    /*
+        Each LightBulb has a poll, a cone and the light. The light is a parameter of the class so that it can be
+        turned on/off for each instance.
+    */
     createLightBulb(x,y,z){
         var body = new THREE.BoxGeometry(2,90,2);
         var material = new THREE.MeshBasicMaterial( {color: 0x111111} );

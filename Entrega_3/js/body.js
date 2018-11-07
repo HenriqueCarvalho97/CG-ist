@@ -45,6 +45,7 @@ class Body extends AirplaneComponent{
 
             this.geometry.vertices.push(new THREE.Vector3(0, 0, -12));
 
+
             //LEFTSIDE
             this.geometry.faces.push(new THREE.Face3(5, 8, 15));
             this.geometry.faces.push(new THREE.Face3(2, 5, 15));
@@ -71,10 +72,9 @@ class Body extends AirplaneComponent{
             this.geometry.faces.push(new THREE.Face3(17, 12, 13));
             this.geometry.faces.push(new THREE.Face3(17, 16, 12));
 
-
             this.geometry.computeFaceNormals();
 
-            var lambMaterial = new THREE.MeshLambertMaterial({color: 0x00ff00});
+            var lambMaterial = new THREE.MeshLambertMaterial({color: 0xbbc9e8, emissive:0x0});
             lambMaterial.shading = THREE.FlatShading;
             lambMaterial.shading = THREE.SmoothShading;
             this.geometry.normalsNeedUpdate = true;
@@ -82,8 +82,9 @@ class Body extends AirplaneComponent{
             this.mesh1 = new THREE.Mesh(this.geometry, lambMaterial);
             this.mesh1.position.set(x,y,z);
 
-            var axis = new THREE.AxisHelper(50);
-            this.mesh1.add(axis);
+
+            // var axis = new THREE.AxisHelper(50);
+            // this.mesh1.add(axis);
             scene.add(this.mesh1);
 	}
 

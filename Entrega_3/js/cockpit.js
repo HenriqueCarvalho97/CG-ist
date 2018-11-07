@@ -18,16 +18,17 @@ class Cockpit extends AirplaneComponent{
         this.geometry.faces.push(new THREE.Face3(0, 1, 2));
         this.geometry.faces.push(new THREE.Face3(0, 2, 4));
         this.geometry.faces.push(new THREE.Face3(4, 2, 3));
-        this.geometry.faces.push(new THREE.Face3(3, 4, 5));
+        this.geometry.faces.push(new THREE.Face3(3, 5, 4));
         this.geometry.faces.push(new THREE.Face3(0, 4, 1));
-        this.geometry.faces.push(new THREE.Face3(5, 4, 1));
+        this.geometry.faces.push(new THREE.Face3(4, 5, 1));
         this.geometry.faces.push(new THREE.Face3(5, 3, 1));
 
         this.geometry.computeFaceNormals();
 
-        var lambMaterial = new THREE.MeshLambertMaterial({color: 0xffff00});
+        var lambMaterial = new THREE.MeshLambertMaterial({color: 0x8888ff, opacity: 0.6, transparent: true});
         lambMaterial.shading = THREE.FlatShading;
         lambMaterial.shading = THREE.SmoothShading;
+
         this.geometry.normalsNeedUpdate = true;
 
         this.mesh1 = new THREE.Mesh(this.geometry, lambMaterial);
