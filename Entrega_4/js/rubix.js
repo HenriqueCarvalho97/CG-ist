@@ -38,6 +38,8 @@ class Rubix extends MyObject{
         this.mesh.position.set(0,6,0);
         scene.add( this.mesh );
 
+        var axesHelper = new THREE.AxisHelper( 25 );
+        scene.add( axesHelper );
         // var material = new THREE.MeshBasicMaterial( { color: 0xffffff, envMap: textureCube } );
     }
 

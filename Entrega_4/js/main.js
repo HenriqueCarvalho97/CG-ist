@@ -1,10 +1,12 @@
 'use strict'
 
-var renderer, scene, camera, controls;
+var renderer, scene, camera, controls, clock;
 
 var directionalLight, pointLight;
 
 var board, cue, rubix, group = [];
+
+var moveBall = false;
 
 function init(){
 
@@ -18,6 +20,8 @@ function init(){
 
     createScene();
     createLights();
+
+    clock = new THREE.Clock();
 
     render();
 
@@ -33,6 +37,9 @@ function animate() {
     // required if controls.enableDamping or controls.autoRotate are set to true
     controls.update();
 
+    var delta = clock.getDelta();
+    cue.moveBall(rubix.position, delta);
+
     render();
 }
 
@@ -45,8 +52,8 @@ function render() {
 function createScene(){
     scene = new THREE.Scene();
 
-    cue = new Cue();
     rubix = new Rubix();
+    cue = new Cue();
     board = new Board();
 
     group.push(cue, rubix, board);
@@ -75,6 +82,9 @@ function createLights(){
 
 function onKeyDown(e){
     switch (e.keyCode) {
+        case 66: //B
+            moveBall = !moveBall;
+            break;
         case 68: //D
             directionalLight.visible = !directionalLight.visible;
             break;

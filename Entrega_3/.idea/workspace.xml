@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bffed070-997f-44d2-816b-7fd975f5ede3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Entrega_4/js/myobject.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Entrega_4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Entrega_4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Entrega_4/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Entrega_4/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Entrega_4/js/board.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Entrega_4/js/board.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Entrega_4/js/cue.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Entrega_4/js/cue.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Entrega_4/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Entrega_4/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Entrega_4/js/rubix.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Entrega_4/js/rubix.js" afterDir="false" />
@@ -24,7 +20,7 @@
     <session id="1825141655">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.7" value="1" />
@@ -102,7 +98,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
+            <state relative-caret-position="1462">
               <caret line="123" column="31" selection-start-line="123" selection-start-column="31" selection-end-line="123" selection-end-column="31" />
             </state>
           </provider>
@@ -173,6 +169,8 @@
       <find>camera</find>
       <find>Spotlight</find>
       <find>ambient</find>
+      <find>directionA</find>
+      <find>direc</find>
     </findStrings>
     <replaceStrings>
       <replace>48</replace>
@@ -249,7 +247,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Entrega_1" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -279,16 +277,15 @@
       <workItem from="1541521838396" duration="9894000" />
       <workItem from="1541539504547" duration="13200000" />
       <workItem from="1542670057737" duration="2073000" />
-      <workItem from="1542680442680" duration="2718000" />
+      <workItem from="1542680442680" duration="3890000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46659000" />
+    <option name="totallyTimeSpent" value="47831000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.120290816" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -386,7 +383,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
+        <state relative-caret-position="1462">
           <caret line="123" column="31" selection-start-line="123" selection-start-column="31" selection-end-line="123" selection-end-column="31" />
         </state>
       </provider>
