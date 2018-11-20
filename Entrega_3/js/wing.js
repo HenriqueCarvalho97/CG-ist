@@ -55,8 +55,9 @@ class Wing extends AirplaneComponent{
         this.geometry.normalsNeedUpdate = true;
 
         this.mesh1 = new THREE.Mesh(this.geometry, lambMaterial);
-        this.mesh1.position.set(x, y, z);
-        scene.add(this.mesh1);
+        this.mesh1.position.set(x , y + 5, z);
+        this.mesh1.rotation.y = Math.PI;
+        // scene.add(this.mesh1);
 	}
 
 }

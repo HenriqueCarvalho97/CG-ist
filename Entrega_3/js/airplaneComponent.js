@@ -9,23 +9,6 @@ class AirplaneComponent extends THREE.Object3D {
         this.lightingOn = true;
         this.lamb = true;
     }
-
-    rotateRight(){
-        this.mesh1.rotateOnAxis(this.directionAxis, 0.1 );
-    }
-
-    rotateLeft(){
-        this.mesh1.rotateOnAxis(this.directionAxis, -0.1 );
-    }
-
-    rotateUp(){
-        this.mesh1.rotation.z += 0.1;
-    }
-
-    rotateDown(){
-        this.mesh1.rotation.z -= 0.1;
-    }
-
     /*
         In case key "L" is pressed change the lighting calculus on/off.
         We use a flag to check if is on or off.

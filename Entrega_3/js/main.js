@@ -2,7 +2,7 @@ var cameraPerspective, scene, renderer;
 
 var geometry, material, mesh;
 
-var body, wing, verticalStabilizer, sideStabilizer, cockpit, sun;
+var nose, body, wing, verticalStabilizer, sideStabilizer, cockpit, sun;
 
 var angle = 0;
 
@@ -10,12 +10,18 @@ var pointlight1, pointlight2, pointlight3, pointlight4;
 
 var airplane = [];
 
+var directionAxis = new THREE.Vector3(1,0,0);
+
 function createScene() {
 	'use strict';
 
+
 	scene = new THREE.Scene();
 
-    body = new Body(0, 0, 0);
+    nose = new Nose(-18, 0, 0);
+    body = new Body(19, 0, 0);
+    airplane = new THREE.Group();
+    scene.add(airplane);
 
 	wing = new Wing(0, 0, 0);
 
@@ -25,17 +31,39 @@ function createScene() {
 
     cockpit = new Cockpit(0, 0, 0);
 
-    airplane.push(body, wing, verticalStabilizer, sideStabilizer, cockpit);
+    airplane.add(body.mesh2,body.mesh1, nose.mesh1, nose.mesh2, wing.mesh1, sideStabilizer.mesh1, verticalStabilizer.mesh1, cockpit.mesh1, cockpit.mesh2);
 
 }
 
 function createSun(){
 	//Creates a directionalLight with color 0xffffee and intensity 1
-    sun = new THREE.DirectionalLight(0xffffee, 1);
-    sun.position.x = 60;
-    sun.position.y = 120;
-    sun.position.z = 0;
-    scene.add(sun);
+    var hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.6 );
+    hemiLight.color.setHex(0xfcf0c7);
+    hemiLight.groundColor.setHex( 0x804040);
+    hemiLight.position.set( 0, 500, 0 );
+    scene.add( hemiLight );
+
+    var dirLight = new THREE.DirectionalLight( 0xffffff, 1 );
+    dirLight.position.set( -1, 0.75, 1 );
+    dirLight.position.multiplyScalar( 50);
+    dirLight.name = "dirlight";
+    // dirLight.shadowCameraVisible = true;
+
+    scene.add( dirLight );
+
+    dirLight.castShadow = true;
+    dirLight.shadowMapWidth = dirLight.shadowMapHeight = 1024*2;
+
+    var d = 300;
+
+    dirLight.shadowCameraLeft = -d;
+    dirLight.shadowCameraRight = d;
+    dirLight.shadowCameraTop = d;
+    dirLight.shadowCameraBottom = -d;
+
+    dirLight.shadowCameraFar = 3500;
+    dirLight.shadowBias = -0.0001;
+    dirLight.shadowDarkness = 0.35;
 }
 
 /*
@@ -94,27 +122,19 @@ function onKeyDown(e) {
 			break;
 
 		case 39: // Right Arrow
-			airplane.forEach(function e(element){
-				element.rotateRight();
-			});
+            airplane.rotateOnAxis(directionAxis, 0.1 );
             break;
 
 		case 37: // Left Arrow
-			airplane.forEach(function e(element){
-				element.rotateLeft();
-			});
+            airplane.rotateOnAxis(directionAxis, -0.1 );
             break;
 
 		case 38: // Up Arrow
-			airplane.forEach(function e(element){
-				element.rotateUp();
-			});
+			airplane.rotation.z -= 0.1;
             break;
 
 		case 40: // Down Arrow
-			airplane.forEach(function e(element){
-				element.rotateDown();
-			});
+            airplane.rotation.z += 0.1;
             break;
 
 		case 78: //N - Sun On/Off

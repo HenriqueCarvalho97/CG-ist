@@ -42,8 +42,8 @@ class VerticalStabilizer extends AirplaneComponent{
         this.material = new THREE.MeshLambertMaterial({ color: 0xbbc9e8});
 
         this.mesh1 = new THREE.Mesh(this.geometry, this.material);
-        this.mesh1.position.set(x,y, z);
-
-        scene.add(this.mesh1);
+        this.mesh1.position.set(x + 10, y , z);
+        this.mesh1.rotation.y = Math.PI;
+        this.mesh1.rotation.z = 0.2;
 	}
 }

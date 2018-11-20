@@ -9,7 +9,7 @@ class Pointlight extends THREE.SpotLight{
 
         this.createLightBulb(x,y,z);
 
-        this.light = new THREE.PointLight( 0xffff66, 1, 200);
+        this.light = new THREE.PointLight( 0xffffff, 1, 200);
         this.light.position.set(x, y/2, z);
         scene.add(this.light);
     }
