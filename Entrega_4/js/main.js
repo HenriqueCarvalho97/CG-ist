@@ -2,7 +2,9 @@
 
 var renderer, scene, camera, controls;
 
-var board, cue, rubix;
+var directionalLight, pointLight;
+
+var board, cue, rubix, group = [];
 
 function init(){
 
@@ -15,11 +17,11 @@ function init(){
     renderer.autoClear = false;
 
     createScene();
-    createCamera();
+    createLights();
 
     render();
 
-    // window.addEventListener("keydown", onKeyDown);
+    window.addEventListener("keydown", onKeyDown);
     // window.addEventListener("resize", onResize);
 
 }
@@ -43,9 +45,11 @@ function render() {
 function createScene(){
     scene = new THREE.Scene();
 
-    board = new Board();
     cue = new Cue();
     rubix = new Rubix();
+    board = new Board();
+
+    group.push(cue, rubix, board);
 
     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 3 * window.innerHeight);
     camera.lookAt(scene.position);
@@ -57,12 +61,35 @@ function createScene(){
     camera.position.set(100,104,80);
     controls.update();
 
-    // var light = new THREE.PointLight(0xFFFFFF);
-    var sunLight = new THREE.DirectionalLight( 0xffffff, 1.2 );
-    // color, intensity
-    sunLight.position.set( 50,50,50 );
-    scene.add(sunLight);
 }
 
-function createCamera(){
+function createLights(){
+    directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );
+    directionalLight.position.set(50,50,50);
+    scene.add( directionalLight );
+
+    pointLight = new THREE.PointLight( 0xffffff, 1, 100 );
+    pointLight.position.set( 0, 25, 0 );
+    scene.add( pointLight );
+}
+
+function onKeyDown(e){
+    switch (e.keyCode) {
+        case 68: //D
+            directionalLight.visible = !directionalLight.visible;
+            break;
+        case 80: //P
+            pointLight.visible = !pointLight.visible;
+            break;
+        case 87: //W
+            group.forEach(function(element){
+                element.toggleWireframe();
+            });
+            break;
+        case 76: //L
+            group.forEach(function(element){
+                element.toggleLight();
+            });
+            break;
+    }
 }

@@ -1,8 +1,10 @@
 'use strict'
 
-class Rubix{
+class Rubix extends MyObject{
     constructor(){
+        super();
         this.geometry = new THREE.CubeGeometry(8, 8, 8);
+        this.name = "rubix";
         let textureLoader = new THREE.TextureLoader();
         let texture1 = textureLoader.load( 'textures/rubix/face1.jpg' );
         let texture2 = textureLoader.load( 'textures/rubix/face2.jpg' );
@@ -13,7 +15,7 @@ class Rubix{
 
         let bumpTexture = textureLoader.load('textures/base.jpg');
 
-        let materials = [
+        this.materials = [
             new THREE.MeshPhongMaterial( { map: texture1 , bumpMap: bumpTexture } ),
             new THREE.MeshPhongMaterial( { map: texture2 , bumpMap: bumpTexture } ),
             new THREE.MeshPhongMaterial( { map: texture3 , bumpMap: bumpTexture } ),
@@ -21,11 +23,28 @@ class Rubix{
             new THREE.MeshPhongMaterial( { map: texture5 , bumpMap: bumpTexture } ),
             new THREE.MeshPhongMaterial( { map: texture6 , bumpMap: bumpTexture } )
         ];
-        this.faceMaterial = new THREE.MeshFaceMaterial( materials );
-        this.cube = new THREE.Mesh( this.geometry, this.faceMaterial );
-        this.cube.position.set(0,6,0);
-        scene.add( this.cube );
+
+        this.materials2 = [
+            new THREE.MeshBasicMaterial( { map: texture1 , bumpMap: bumpTexture } ),
+            new THREE.MeshBasicMaterial( { map: texture2 , bumpMap: bumpTexture } ),
+            new THREE.MeshBasicMaterial( { map: texture3 , bumpMap: bumpTexture } ),
+            new THREE.MeshBasicMaterial( { map: texture4 , bumpMap: bumpTexture } ),
+            new THREE.MeshBasicMaterial( { map: texture5 , bumpMap: bumpTexture } ),
+            new THREE.MeshBasicMaterial( { map: texture6 , bumpMap: bumpTexture } )
+        ];
+        this.originalMaterial = new THREE.MeshFaceMaterial( this.materials );
+        this.material = new THREE.MeshFaceMaterial(this.materials2)
+        this.mesh = new THREE.Mesh( this.geometry, this.originalMaterial );
+        this.mesh.position.set(0,6,0);
+        scene.add( this.mesh );
 
         // var material = new THREE.MeshBasicMaterial( { color: 0xffffff, envMap: textureCube } );
+    }
+
+    toggleWireframe(){
+        for (var i = 0; i < 6; i++) {
+            this.materials[i].wireframe = !this.materials[i].wireframe;
+            this.materials2[i].wireframe = !this.materials2[i].wireframe;
+        }
     }
 }
