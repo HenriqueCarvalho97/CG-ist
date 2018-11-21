@@ -1,7 +1,7 @@
 'use strict'
 
 class Rubix extends MyObject{
-    constructor(){
+    constructor(x,y,z){
         super();
         this.geometry = new THREE.CubeGeometry(8, 8, 8);
         this.name = "rubix";
@@ -33,9 +33,9 @@ class Rubix extends MyObject{
             new THREE.MeshBasicMaterial( { map: texture6 , bumpMap: bumpTexture } )
         ];
         this.originalMaterial = new THREE.MeshFaceMaterial( this.materials );
-        this.material = new THREE.MeshFaceMaterial(this.materials2)
+        this.material = new THREE.MeshFaceMaterial(this.materials2);
         this.mesh = new THREE.Mesh( this.geometry, this.originalMaterial );
-        this.mesh.position.set(0,6,0);
+        this.mesh.position.set(x,y + 6,z);
         scene.add( this.mesh );
 
         var axesHelper = new THREE.AxisHelper( 25 );

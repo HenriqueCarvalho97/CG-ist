@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9f7298e4-e367-44d9-9234-0cdcb10efefe" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/proj/js/ball.js" beforeDir="false" afterPath="$PROJECT_DIR$/proj/js/ball.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proj/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/proj/js/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Entrega_4/js/menu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Entrega_1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Entrega_1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Entrega_4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Entrega_4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Entrega_4/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Entrega_4/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Entrega_4/js/cue.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Entrega_4/js/cue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Entrega_4/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Entrega_4/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Entrega_4/js/rubix.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Entrega_4/js/rubix.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -18,13 +24,14 @@
     <session id="2021655159">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
-          <entry key="project.open.time.0" value="1" />
+          <entry key="project.closed" value="7" />
+          <entry key="project.open.time.0" value="2" />
+          <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -42,13 +49,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="77" />
-          <entry key="js" value="11430" />
+          <entry key="js" value="11431" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="77" />
-          <entry key="JavaScript" value="11430" />
+          <entry key="JavaScript" value="11431" />
         </counts>
       </usages-collector>
     </session>
@@ -91,20 +98,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/proj/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3128">
-              <caret line="184" column="42" selection-start-line="184" selection-start-column="42" selection-end-line="184" selection-end-column="42" />
+            <state relative-caret-position="463">
+              <caret line="84" column="32" lean-forward="true" selection-start-line="84" selection-start-column="32" selection-end-line="84" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/proj/js/ball.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="56" column="51" selection-start-line="56" selection-start-column="51" selection-end-line="56" selection-end-column="51" />
+            <state relative-caret-position="578">
+              <caret line="34" column="18" lean-forward="true" selection-start-line="34" selection-start-column="18" selection-end-line="34" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -156,8 +163,8 @@
         <option value="$PROJECT_DIR$/proj/index.html" />
         <option value="$PROJECT_DIR$/proj/js/base.js" />
         <option value="$PROJECT_DIR$/proj/js/movable.js" />
-        <option value="$PROJECT_DIR$/proj/js/main.js" />
         <option value="$PROJECT_DIR$/proj/js/ball.js" />
+        <option value="$PROJECT_DIR$/proj/js/main.js" />
       </list>
     </option>
   </component>
@@ -178,7 +185,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -201,11 +207,12 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../3ª" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Entrega_3" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -236,16 +243,18 @@
       <workItem from="1540397251650" duration="23000" />
       <workItem from="1540466579615" duration="2283000" />
       <workItem from="1541464252438" duration="60000" />
+      <workItem from="1542688990221" duration="836000" />
+      <workItem from="1542792876208" duration="3422000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43343000" />
+    <option name="totallyTimeSpent" value="47601000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.5168539" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18440185" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -308,17 +317,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/proj/js/main.js">
+    <entry file="file://$PROJECT_DIR$/proj/js/ball.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3128">
-          <caret line="184" column="42" selection-start-line="184" selection-start-column="42" selection-end-line="184" selection-end-column="42" />
+        <state relative-caret-position="578">
+          <caret line="34" column="18" lean-forward="true" selection-start-line="34" selection-start-column="18" selection-end-line="34" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/proj/js/ball.js">
+    <entry file="file://$PROJECT_DIR$/proj/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="56" column="51" selection-start-line="56" selection-start-column="51" selection-end-line="56" selection-end-column="51" />
+        <state relative-caret-position="463">
+          <caret line="84" column="32" lean-forward="true" selection-start-line="84" selection-start-column="32" selection-end-line="84" selection-end-column="32" />
         </state>
       </provider>
     </entry>

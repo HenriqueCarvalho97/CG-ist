@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bffed070-997f-44d2-816b-7fd975f5ede3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../Entrega_4/js/menu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Entrega_1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Entrega_1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Entrega_2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Entrega_2/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Entrega_4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Entrega_4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Entrega_4/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Entrega_4/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Entrega_4/js/cue.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Entrega_4/js/cue.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Entrega_4/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Entrega_4/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Entrega_4/js/rubix.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Entrega_4/js/rubix.js" afterDir="false" />
@@ -20,12 +24,13 @@
     <session id="1825141655">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="6" />
           <entry key="project.open.time.0" value="2" />
+          <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -98,8 +103,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1462">
-              <caret line="123" column="31" selection-start-line="123" selection-start-column="31" selection-end-line="123" selection-end-column="31" />
+            <state relative-caret-position="531">
+              <caret line="106" column="47" lean-forward="true" selection-start-line="90" selection-start-column="4" selection-end-line="106" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -125,7 +130,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/airplaneComponent.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-425">
+            <state relative-caret-position="85">
               <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
@@ -247,7 +252,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Entrega_1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../../quarta-avalicao" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -278,11 +283,12 @@
       <workItem from="1541539504547" duration="13200000" />
       <workItem from="1542670057737" duration="2073000" />
       <workItem from="1542680442680" duration="3890000" />
+      <workItem from="1542801579556" duration="172000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47831000" />
+    <option name="totallyTimeSpent" value="48003000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -318,10 +324,24 @@
     <entry file="file://$PROJECT_DIR$/js/spotlight" />
     <entry file="file://$PROJECT_DIR$/js/spotlight.js" />
     <entry file="file://$PROJECT_DIR$/teacher.html" />
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="19" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/lights.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="51" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/body.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="46" lean-forward="true" selection-start-line="24" selection-start-column="46" selection-end-line="24" selection-end-column="46" />
         </state>
       </provider>
     </entry>
@@ -332,10 +352,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/nose.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="36" lean-forward="true" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/wing.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="969">
           <caret line="57" column="8" lean-forward="true" selection-start-line="57" selection-start-column="8" selection-end-line="58" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/airplaneComponent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
@@ -353,38 +387,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/nose.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="36" lean-forward="true" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/airplaneComponent.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-425">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="19" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/body.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="46" lean-forward="true" selection-start-line="24" selection-start-column="46" selection-end-line="24" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1462">
-          <caret line="123" column="31" selection-start-line="123" selection-start-column="31" selection-end-line="123" selection-end-column="31" />
+        <state relative-caret-position="531">
+          <caret line="106" column="47" lean-forward="true" selection-start-line="90" selection-start-column="4" selection-end-line="106" selection-end-column="47" />
         </state>
       </provider>
     </entry>
